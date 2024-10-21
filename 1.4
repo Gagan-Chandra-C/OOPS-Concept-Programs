@@ -1,0 +1,52 @@
+class Person {
+    // Attributes of Person 
+    protected String name;
+    protected int age;
+
+    // Constructor for Person
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    // Method to display person details 
+    public void displayPersonInfo() {
+        System.out.println("Name: " + name);
+        System.out.println("Age: " + age);
+    }
+}
+
+// Subclass Employee that inherits from Person
+class Employee extends Person {
+    // Additional attributes for Employee 
+    private int employeeID;
+    private double salary;
+
+    // Constructor for Employee using super to initialize Person attributes
+    public Employee(String name, int age, int employeeID, double salary) {
+        // Initialize Person attributes using super 
+        super(name, age);
+        this.employeeID = employeeID;
+        this.salary = salary;
+    }
+
+    // Method to display employee details 
+    public void displayEmployeeInfo() {
+        // Display Person details 
+        super.displayPersonInfo();
+        // Display Employee-specific details 
+        System.out.println("Employee ID: " + employeeID);
+        System.out.println("Salary: " + salary);
+    }
+}
+
+// Main class to demonstrate inheritance 
+public class Main {
+    public static void main(String[] args) {
+        // Create an Employee object 
+        Employee emp = new Employee("John Doe", 30, 12345, 50000.0);
+
+        // Display employee information 
+        emp.displayEmployeeInfo();
+    }
+}

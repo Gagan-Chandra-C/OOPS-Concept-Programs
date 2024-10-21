@@ -1,0 +1,60 @@
+import java.util.Scanner;
+
+// Class to represent a Product
+class Product {
+    // Properties
+    int pid;
+    double price;
+    int quantity;
+    // Parameterized Constructor
+    public Product(int pid, double price, int quantity) {
+        this.pid = pid;
+        this.price = price;
+        this.quantity = quantity;
+    }
+}
+
+// Class XYZ that contains the main method
+public class XYZ {
+
+    // Method to calculate total amount spent on all products
+    public static double totalAmountSpent(Product[] products) {
+        double totalAmount = 0;
+        for (Product product : products) {
+            totalAmount += product.price * product.quantity;
+        }
+        return totalAmount;
+    }
+
+    public static void main(String[] args) {
+        // Create an array to store 5 products
+        Product[] products = new Product[5];
+        Scanner sc = new Scanner(System.in);
+
+        // Accepting product information from user
+        for (int i = 0; i < 5; i++) {
+            System.out.println("Enter details for product " + (i + 1) + ":");
+            System.out.print("Enter Product ID: ");
+            int pid = sc.nextInt();
+            System.out.print("Enter Price: ");
+            double price = sc.nextDouble();
+            System.out.print("Enter Quantity: ");
+            int quantity = sc.nextInt();
+            products[i] = new Product(pid, price, quantity); }
+
+
+        // Finding the product with the highest price
+        int highestPricePid = products[0].pid;
+        double highestPrice = products[0].price;
+        for (int i = 1; i < products.length; i++) {
+            if (products[i].price > highestPrice) {
+                highestPrice = products[i].price;
+                highestPricePid = products[i].pid;
+            }
+        }
+        System.out.println("Product with highest price has PID: " + highestPricePid);
+
+        // Calculating the total amount spent on all products
+        double totalAmount = totalAmountSpent(products); System.out.println("Total amount spent on all products: " + totalAmount);
+    }
+}

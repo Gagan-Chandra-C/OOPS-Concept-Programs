@@ -1,0 +1,65 @@
+class Account {
+    // Encapsulated data member
+    private double balance;
+
+    // No-argument constructor (sets default balance to 0) 
+    public Account() {
+        this.balance = 0.0;
+    }
+    // Constructor with initial balance 
+    public Account(double balance) {
+        this.balance = balance;
+    }
+
+    // Method to deposit amount to the account 
+    public void deposit(double amount) {
+        if (amount > 0) {
+            balance += amount;
+            System.out.println("Deposited: " + amount);
+        } else {
+            System.out.println("Deposit amount must be positive.");
+        }
+    }
+
+    // Method to withdraw amount from the account
+    public void withdraw(double amount) {
+        if (amount > 0) {
+            if (balance >= amount) {
+                balance -= amount;
+                System.out.println("Withdrawn: " + amount);
+            } else { System.out.println("Insufficient balance for withdrawal.");
+            }
+        } else {
+            System.out.println("Withdrawal amount must be positive.");
+        }
+    }
+
+    // Method to display the current balance 
+    public void displayBalance() {
+        System.out.println("Current balance: " + balance);
+    }
+}
+
+// Main class to demonstrate the functionality of Account class 
+public class Main { public static void main(String[] args) {
+    // Creating Account objects using both constructors
+    Account account1 = new Account(); // No initial balance 
+    Account account2 = new Account(500.0); // Initial balance of 500 
+
+    // Performing operations on account1 
+    System.out.println("Account 1:");
+    account1.displayBalance(); // Output: Current balance: 0.0 
+    account1.deposit(200); // Deposit 200 
+    account1.displayBalance(); // Output: Current balance: 200.0 
+    account1.withdraw(50); // Withdraw 50 
+    account1.displayBalance(); // Output: Current balance: 150.0 
+
+    // Performing operations on account2 
+    System.out.println("\nAccount 2:");
+    account2.displayBalance(); // Output: Current balance: 500.0 
+    account2.deposit(300); // Deposit 300 
+    account2.displayBalance(); // Output: Current balance: 800.0 
+    account2.withdraw(900); // Insufficient balance
+    account2.displayBalance(); // Output: Current balance: 800.0
+  }
+}
